@@ -44,15 +44,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/my-feedback"
+          element={
+            <ProtectedRoute allowedRoles={["citizen", "employee"]}>
+              <FeedbackHistory />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-      <Route
-        path="/my-feedback"
-        element={
-          <ProtectedRoute allowedRoles={["citizen", "employee"]}>
-            <FeedbackHistory />
-          </ProtectedRoute>
-        }
-      />
     </BrowserRouter>
   );
 }

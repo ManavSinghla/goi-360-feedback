@@ -1,13 +1,16 @@
 const express = require("express");
-const { submitFeedback, getMyFeedbacks } = require("../controllers/feedbackController");
 const authMiddleware = require("../middleware/authMiddleware");
+const {
+  submitFeedback,
+  getMyFeedbacks
+} = require("../controllers/feedbackController");
 
 const router = express.Router();
 
 // submit feedback
 router.post("/", authMiddleware, submitFeedback);
 
-// citizen feedback history
+// get logged-in user's feedback
 router.get("/my", authMiddleware, getMyFeedbacks);
 
 module.exports = router;

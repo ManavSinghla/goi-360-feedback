@@ -1,4 +1,4 @@
-const Feedback = require("../models/feedback");
+const Feedback = require("../models/Feedback");
 
 exports.submitFeedback = async (req, res) => {
   try {
@@ -12,11 +12,9 @@ exports.submitFeedback = async (req, res) => {
       isAnonymous
     });
 
-    res.status(201).json({
-      message: "Feedback submitted successfully",
-      feedback
-    });
+    res.status(201).json({ message: "Feedback submitted", feedback });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -29,6 +27,7 @@ exports.getMyFeedbacks = async (req, res) => {
 
     res.json(feedbacks);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
