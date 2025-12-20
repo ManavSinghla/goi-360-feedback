@@ -235,7 +235,7 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  box-shadow: var(--focus-ring);
 }
 
 input::placeholder,
@@ -334,25 +334,25 @@ input[type="range"]:hover::-moz-range-thumb {
 
 .alert-success {
   color: var(--color-success-dark);
-  background-color: #d1fae5;
+  background-color: var(--bg-success-light);
   border-color: var(--color-success-light);
 }
 
 .alert-danger {
   color: var(--color-danger-dark);
-  background-color: #fee2e2;
+  background-color: var(--bg-danger-light);
   border-color: var(--color-danger-light);
 }
 
 .alert-warning {
   color: var(--color-warning-dark);
-  background-color: #fef3c7;
+  background-color: var(--bg-warning-light);
   border-color: var(--color-warning-light);
 }
 
 .alert-info {
   color: var(--color-info-dark);
-  background-color: #cffafe;
+  background-color: var(--bg-info-light);
   border-color: var(--color-info-light);
 }
 

@@ -41,6 +41,12 @@
   --bg-tertiary: #f1f5f9;
   --bg-dark: #1e293b;
   
+  /* Alert Background Colors */
+  --bg-success-light: #d1fae5;
+  --bg-danger-light: #fee2e2;
+  --bg-warning-light: #fef3c7;
+  --bg-info-light: #cffafe;
+  
   /* Text Colors */
   --text-primary: #0f172a;
   --text-secondary: #475569;
@@ -58,6 +64,9 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Focus Ring */
+  --focus-ring: 0 0 0 3px rgba(30, 64, 175, 0.1);
   
   /* Spacing Scale (8px grid system) */
   --spacing-xs: 0.25rem;   /* 4px */
@@ -340,7 +349,7 @@ a:focus-visible {
     text-decoration: underline;
   }
   
-  a[href]:after {
+  a[href^="http"]:after {
     content: " (" attr(href) ")";
   }
   
