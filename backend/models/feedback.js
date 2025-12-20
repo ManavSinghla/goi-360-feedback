@@ -7,23 +7,28 @@ const feedbackSchema = new mongoose.Schema(
       ref: "User",
       required: true
     },
-    departmentId: {
+    newsId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Department",
+      ref: "News",
       required: true
     },
     ratings: {
-      serviceQuality: { type: Number, required: true },
-      transparency: { type: Number, required: true },
-      responsiveness: { type: Number, required: true }
+      relevance: { type: Number, required: true },
+      accuracy: { type: Number, required: true },
+      sentiment: { type: Number, required: true }
     },
     comment: String,
-    isAnonymous: Boolean
+    sentimentLabel: {
+      type: String,
+      enum: ["Positive", "Neutral", "Negative"]
+    },
+    region: String,
+    language: String,
+    category: String
   },
   { timestamps: true }
 );
 
-// ✅ SAFE MODEL EXPORT (IMPORTANT)
 module.exports =
   mongoose.models.Feedback ||
   mongoose.model("Feedback", feedbackSchema);

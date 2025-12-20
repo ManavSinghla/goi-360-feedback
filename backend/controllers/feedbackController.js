@@ -1,33 +1,40 @@
-const Feedback = require("../models/Feedback");
+const Feedback = require("../models/feedback");
+const News = require("../models/News");
+
+const detectSentiment = (comment = "") => {
+  const text = comment.toLowerCase();
+  if (text.includes("good") || text.includes("excellent")) return "Positive";
+  if (text.includes("bad") || text.includes("fake")) return "Negative";
+  return "Neutral";
+};
 
 exports.submitFeedback = async (req, res) => {
   try {
-    const { departmentId, ratings, comment, isAnonymous } = req.body;
+    const { newsId, ratings, comment } = req.body;
+
+    const news = await News.findById(newsId);
+    if (!news) return res.status(404).json({ message: "News not found" });
 
     const feedback = await Feedback.create({
       userId: req.user.id,
-      departmentId,
+      newsId,
       ratings,
       comment,
-      isAnonymous
+      sentimentLabel: detectSentiment(comment),
+      region: news.region,
+      language: news.language,
+      category: news.category
     });
 
     res.status(201).json({ message: "Feedback submitted", feedback });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Error submitting feedback" });
   }
 };
 
-exports.getMyFeedbacks = async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find({ userId: req.user.id })
-      .populate("departmentId", "name")
-      .sort({ createdAt: -1 });
-
-    res.json(feedbacks);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  }
+exports.getFeedbackByNews = async (req, res) => {
+  const feedback = await Feedback.find({ newsId: req.params.newsId })
+    .populate("userId", "name");
+  res.json(feedback);
 };

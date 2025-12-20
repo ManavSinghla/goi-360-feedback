@@ -22,3 +22,5 @@ app.listen(PORT, () => {
 app.use("/api/feedback", require("./routes/feedbackRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/departments", require("./routes/departmentRoutes"));
+app.use("/api/news", require("./routes/newsRoutes"));
+app.use("/api/analytics", require("./routes/analyticsRoutes"));

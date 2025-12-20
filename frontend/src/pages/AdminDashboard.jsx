@@ -24,7 +24,7 @@ function AdminDashboard() {
   if (loading) return <h3>Loading Dashboard...</h3>;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="container">
       <h2>Admin Analytics Dashboard</h2>
       <AdminCharts data={data} />
     </div>

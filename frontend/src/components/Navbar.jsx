@@ -13,14 +13,15 @@ function Navbar() {
   if (!role) return null; // hide navbar if not logged in
 
   return (
-    <nav style={styles.nav}>
+    <nav className="navbar">
       <h3>GOI 360° Feedback</h3>
 
-      <div style={styles.links}>
+      <div className="nav-links">
         {(role === "citizen" || role === "employee") && (
           <>
-            <Link to="/feedback">Feedback</Link>
+            {/* <Link to="/feedback">Feedback</Link> */}
             <Link to="/my-feedback">My Feedback</Link>
+            <Link to="/news">News</Link>
           </>
         )}
 
@@ -28,10 +29,13 @@ function Navbar() {
           <>
             <Link to="/admin">Dashboard</Link>
             <Link to="/admin/departments">Departments</Link>
+            <Link to="/admin/news">Manage News</Link>
+            <Link to="/news">News</Link>
+            <Link to="/admin/analytics">Analytics</Link>
           </>
         )}
 
-        <button onClick={handleLogout} style={styles.logout}>
+        <button className="danger" onClick={handleLogout} style={styles.logout}>
           Logout
         </button>
       </div>
