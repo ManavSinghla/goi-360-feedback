@@ -14,12 +14,11 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <h3>GOI 360° Feedback</h3>
+      <div className="logo">GOI 360° Feedback</div>
 
       <div className="nav-links">
         {(role === "citizen" || role === "employee") && (
           <>
-            {/* <Link to="/feedback">Feedback</Link> */}
             <Link to="/my-feedback">My Feedback</Link>
             <Link to="/news">News</Link>
           </>
@@ -35,34 +34,12 @@ function Navbar() {
           </>
         )}
 
-        <button className="danger" onClick={handleLogout} style={styles.logout}>
+        <button className="danger" onClick={handleLogout}>
           Logout
         </button>
       </div>
     </nav>
   );
 }
-
-const styles = {
-  nav: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "10px 20px",
-    background: "#1e293b",
-    color: "#fff",
-  },
-  links: {
-    display: "flex",
-    gap: "15px",
-    alignItems: "center",
-  },
-  logout: {
-    background: "#ef4444",
-    color: "#fff",
-    border: "none",
-    padding: "5px 10px",
-    cursor: "pointer",
-  },
-};
 
 export default Navbar;

@@ -29,39 +29,50 @@ function Login() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px" }}>
-      <h2>Login</h2>
+    <div className="center-box">
+      <div className="auth-container">
+        <h2>Login</h2>
+        <p>Welcome back! Please access your account.</p>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <br />
-        <br />
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <button type="submit" style={{ width: "100%" }}>
+            Login
+          </button>
+        </form>
 
-        <br />
-        <br />
+        {error && (
+          <p style={{ color: "#ef4444", marginTop: "10px", fontSize: "0.9rem" }}>
+            {error}
+          </p>
+        )}
 
-        <button type="submit">Login</button>
-      </form>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <p>
-        Don’t have an account? <a href="/register">Register</a>
-      </p>
+        <div style={{ marginTop: "1rem", textAlign: "center", fontSize: "0.9rem" }}>
+          <p style={{ display: "inline" }}>Don’t have an account? </p>
+          <a href="/register">Register</a>
+        </div>
+      </div>
     </div>
   );
 }
